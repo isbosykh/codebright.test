@@ -3,9 +3,10 @@
     <div v-else class="comments-view">
         <h1>Comments</h1>
         <masonry :cols="{ default: 2, 768: 1 }"
+                 v-if="commentsList"
                  :gutter="40"
                  class="team-content">
-            <Comment v-if="commentsList"
+            <Comment
                      v-for="(item, index) of commentsList"
                      :key="index"
                      :title="item.title"
@@ -25,7 +26,7 @@
     import ButtonBack from "@/components/Button-back";
     export default {
         name: "Comments",
-        components: {ButtonBack, Comment},
+        components: { ButtonBack, Comment },
         computed: {
             commentsList() {
                 return this.$store.state.comments

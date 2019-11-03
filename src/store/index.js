@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import {getComments, addComment, getComment} from "@/api";
+import { getComments, addComment, getComment, deleteComment } from "@/api";
 
 Vue.use(Vuex);
 
@@ -38,6 +38,9 @@ export default new Vuex.Store({
     },
     getComment({commit}, id) {
       getComment(id).then(response => commit('addComment', response))
+    },
+    deleteComment() {
+      return deleteComment(this.state.comment.id)
     }
   },
   modules: {},

@@ -8,6 +8,14 @@ function get(url, data = {}) {
     }).then(response => response.json())
 }
 
+function del(url, data = {}) {
+    url = new URL(url);
+    Object.keys(data).forEach(key => url.searchParams.append(key, data[key]));
+    return fetch(url, {
+        method: "DELETE",
+    }).then(response => response.json())
+}
+
 function post(url, data) {
     return fetch(url, {
         method: "POST",
@@ -28,4 +36,8 @@ export function getComment(id) {
 
 export function addComment(data) {
     return post(url, data)
+}
+
+export function deleteComment(id) {
+    return del (`${url}/${id}`)
 }

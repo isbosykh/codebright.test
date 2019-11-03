@@ -47,7 +47,7 @@
     import NewComment from "@/components/New-comment";
     export default {
         name: "Homepage",
-        components: {NewComment},
+        components: { NewComment },
         beforeRouteEnter(to, from, next) {
             next(vm => {
                 if (vm.$route.name === 'write') {

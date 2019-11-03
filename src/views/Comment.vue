@@ -2,9 +2,13 @@
     <div class="comment-view-wrapper">
         <div class="comment-view">
             <div class="content">
-                <router-link :to="{ name: 'comments' }">
-                    <img src="../assets/arrow-back.jpg" alt="">Back to comments
-                </router-link>
+                <header>
+                    <router-link :to="{ name: 'comments' }">
+                        <img src="../assets/arrow-back.jpg" alt="">Back to comments
+                    </router-link>
+                    <DeleteBtn @click="deleteComment()"
+                               title="Delete comment?"/>
+                </header>
                 <h1>{{ comment.title }}</h1>
                 <p>{{ comment.body }}</p>
             </div>
@@ -19,16 +23,26 @@
 
 <script>
     import ButtonBack from "@/components/Button-back";
+    import DeleteBtn from "@/components/Delete-btn";
 
     export default {
         name: "Comment",
-        components: { ButtonBack },
+        components: { DeleteBtn, ButtonBack },
         computed: {
             comment() {
                 return this.$store.state.comment
+            },
+        },
+        methods: {
+            async deleteComment() {
+                await this.$store.dispatch('deleteComment');
+                this.$router.push({name: 'comments'});
             }
         },
         beforeRouteLeave(to, from, next) {
+            if (to.name === 'comments') {
+                this.$store.dispatch('getComments');
+            }
             this.$store.commit('resetComment');
             next();
         },
@@ -50,12 +64,18 @@
 
             .content {
 
-                > a {
-                    color: black;
-                    font-weight: 600;
+                > header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
 
-                    img {
-                        margin-right: 15px;
+                    > a {
+                        color: black;
+                        font-weight: 600;
+
+                        img {
+                            margin-right: 15px;
+                        }
                     }
                 }
 

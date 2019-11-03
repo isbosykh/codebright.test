@@ -1,12 +1,14 @@
 <template>
     <header>
         <div class="logo">
-            <img src="../assets/logo.png" alt="">
+            <router-link :to="{ name: 'home' }">
+                <img src="../assets/logo.png" alt="">
+            </router-link>
         </div>
         <nav>
-            <router-link :to="{name: 'home'}" :class="{selected: route === 'home'}">ABOUT US</router-link>
-            <router-link :to="{name: 'write'}" :class="{selected: route === 'write'}">WRITE COMMENT</router-link>
-            <router-link :to="{name: 'comments'}" :class="{selected: route === 'comments'}">COMMENTS</router-link>
+            <router-link :to="{ name: 'home' }" :class="{selected: route === 'home'}">ABOUT US</router-link>
+            <router-link :to="{ name: 'write' }" :class="{selected: route === 'write'}">WRITE COMMENT</router-link>
+            <router-link :to="{ name: 'comments' }" :class="{selected: route === 'comments'}">COMMENTS</router-link>
         </nav>
     </header>
 </template>
