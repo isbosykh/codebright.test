@@ -6,9 +6,9 @@
             </router-link>
         </div>
         <nav>
-            <router-link :to="{ name: 'home' }" :class="{selected: route === 'home'}">ABOUT US</router-link>
-            <router-link :to="{ name: 'write' }" :class="{selected: route === 'write'}">WRITE COMMENT</router-link>
-            <router-link :to="{ name: 'comments' }" :class="{selected: route === 'comments'}">COMMENTS</router-link>
+            <router-link :to="{ name: 'home' }">ABOUT US</router-link>
+            <router-link :to="{ name: 'write' }">WRITE COMMENT</router-link>
+            <router-link :to="{ name: 'comments' }">COMMENTS</router-link>
         </nav>
     </header>
 </template>
@@ -60,7 +60,7 @@
                     background-color: #F9D10D;
                 }
 
-                &.selected:before {
+                &.router-link-exact-active:before {
                     width: 100%;
                 }
             }

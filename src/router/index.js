@@ -15,6 +15,13 @@ const routes = [
   {
     path: "/write",
     name: "write",
+    beforeEnter(to, from, next) {
+      next(vm => {
+        if (vm.$route.name === 'write') {
+          vm.$refs.writeAnchor.$el.scrollIntoView({ behavior: 'smooth' })
+        }
+      });
+    },
     component: Homepage
   },
   {

@@ -43,7 +43,7 @@
         },
         methods: {
             isValid() {
-                return this.title !== '' && this.body !== '';
+                return this.comment.title !== '' && this.comment.body !== '';
             },
             sendComment() {
                 if (this.isValid())  {

@@ -48,13 +48,6 @@
     export default {
         name: "Homepage",
         components: { NewComment },
-        beforeRouteEnter(to, from, next) {
-            next(vm => {
-                if (vm.$route.name === 'write') {
-                    vm.$refs.writeAnchor.$el.scrollIntoView({behavior: 'smooth'})
-                }
-            });
-        }
     }
 </script>
 
